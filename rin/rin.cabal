@@ -1,0 +1,40 @@
+name:                rin
+version:             0.0.1
+synopsis:            A personal URL shortener
+description:         Please see README.md
+homepage:            http://github.com/noraesae/rin
+license:             Beerware
+license-file:        LICENSE
+author:              Jun
+maintainer:          me@noraesae.net
+copyright:           2015 Jun
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Lib
+  build-depends:       base >= 4.7 && < 5
+  default-language:    Haskell2010
+
+executable rin-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , rin
+  default-language:    Haskell2010
+
+test-suite rin-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , rin
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/githubuser/rin
