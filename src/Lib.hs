@@ -1,6 +1,9 @@
-module Lib
-    ( someFunc
-    ) where
+module Lib where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+import System.IO
+
+prompt :: String -> IO String
+prompt text = do
+  putStr text
+  hFlush stdout
+  getLine
