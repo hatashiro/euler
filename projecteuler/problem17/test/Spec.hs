@@ -1,6 +1,6 @@
 import Test.Hspec
 
-import Lib
+import Euler
 
 main :: IO ()
 main = hspec $ do
