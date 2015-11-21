@@ -4,4 +4,4 @@ import Euler
 
 main :: IO ()
 main =
-  putStrLn.show $ foldl1 (+) $ map (\x -> if isAmicable x then x else 0) [1..10000]
+  putStrLn.show.sum $ map (\x -> if isAmicable x then x else 0) [1..9999]
