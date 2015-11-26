@@ -1,6 +1,7 @@
 module Main where
 
-import Lib
+import Euler
+import System.IO
 
 main :: IO ()
-main = someFunc
+main = interact (show . namesScore . parseNames)
