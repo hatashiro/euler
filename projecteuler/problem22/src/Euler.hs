@@ -3,10 +3,11 @@ module Euler
 , names
 ) where
 
+import Data.String.Utils
 import System.IO
 
 parseNames :: String -> [String]
-parseNames str = []
+parseNames str = map (replace "\"" "") $ split "," str
 
 names :: [String]
 names = do
