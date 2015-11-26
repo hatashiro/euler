@@ -3,6 +3,7 @@ module Euler
 , charValue
 , stringValue
 , namesScore
+, names
 ) where
 
 import Data.Char
@@ -25,3 +26,8 @@ namesScore names =
       sortedNamesWithOrdering = zip [1..] sortedNames
   in
       foldl1 (+) $ map (\x -> (fst x) * (stringValue (snd x))) sortedNamesWithOrdering
+
+names :: IO [String]
+names = do
+  content <- readFile "resource/names.txt"
+  return $ parseNames content

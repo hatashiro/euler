@@ -23,3 +23,8 @@ main = hspec $ do
     it "sums its string values times order" $ do
       (namesScore ["COLIN", "COLIN"]) `shouldBe` (53*3)
       (namesScore ["COLIN", "A"]) `shouldBe` (53*2 + 1)
+
+  describe "names" $ do
+    it "returns IO names" $ do
+      ns <- names
+      ns `shouldContain` ["COLIN"]

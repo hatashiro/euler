@@ -4,4 +4,5 @@ import Euler
 import System.IO
 
 main :: IO ()
-main = interact (show . namesScore . parseNames)
+main = do
+  names >>= putStrLn . show . namesScore
