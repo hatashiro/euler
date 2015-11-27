@@ -1,30 +1,33 @@
 module Euler
-( properDivisors
+( divSum
 , isAbundant
 , isAbundantSum
 ) where
 
 import Data.List
+import Data.Maybe
 
-properDivisors :: Int -> [Int]
-properDivisors n = foldl
-                     (\res a ->
-                       if n `mod` a == 0
-                         then
-                           let a' = n `div` a
-                           in
-                             if a == a' || a' == n
-                               then [a] ++ res
-                               else [a, a'] ++ res
-                         else res)
-                     [] [1..(floor $ sqrt $ fromIntegral n)]
+divSum :: Int -> Int
+divSum n = foldl
+             (\res a ->
+               if n `mod` a == 0
+                 then
+                   let a' = n `div` a
+                   in
+                     if a == a' || a' == n
+                       then a + res
+                       else a + a' + res
+                 else res)
+             0 [1..(floor $ sqrt $ fromIntegral n)]
 
 isAbundant :: Int -> Bool
-isAbundant n = (sum $ properDivisors n) > n
+isAbundant n = divSum n > n
 
 isAbundantMemo :: Int -> Bool
 isAbundantMemo = (map isAbundant [0..] !!)
 
+abundances :: [Int]
+abundances = [x | x <- [1..], isAbundantMemo x]
+
 isAbundantSum :: Int -> Bool
-isAbundantSum n = any (\x -> (isAbundantMemo x && isAbundantMemo (n-x)))
-                      [1..n`div`2]
+isAbundantSum n = isJust $ find (isAbundant.(n-)) $ takeWhile (<n) abundances
