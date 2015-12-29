@@ -28,3 +28,6 @@ integersFromListWithDigit 1 xs = xs
 integersFromListWithDigit digit xs =
   [x * 10^(digit-1) + rest | x <- xs,
                              rest <- integersFromListWithDigit (digit-1) (removeElement x xs)]
+
+diff :: Eq a => [a] -> [a] -> [a]
+diff = foldl (flip removeElement)

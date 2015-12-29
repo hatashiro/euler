@@ -25,3 +25,7 @@ main = hspec $ do
     it "returns a list of possible integers from a list with a digit" $ do
       integersFromListWithDigit 2 [1, 2, 3] `shouldMatchList` [12, 13, 23, 21, 31, 32]
       integersFromListWithDigit 1 [1, 2] `shouldMatchList` [1, 2]
+
+  describe "diff" $
+    it "diffs two lists" $
+      diff [1, 2, 3] [1, 3] `shouldBe` [2]
