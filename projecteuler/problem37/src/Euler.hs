@@ -1,6 +1,7 @@
 module Euler where
 
 import Data.List
+import Data.Maybe
 
 isPrime :: Int -> Bool
 isPrime 1 = False
@@ -28,10 +29,14 @@ rightTruncatablePrimesWithDigit = (map rightTruncatablePrimesWithDigit [0..] !!)
         where primes = rightTruncatablePrimesWithDigit (digit - 1)
               rightConcats = [x + y * 10 | x <- [1..9], y <- primes]
 
-truncatablePrimes' n =
-        let leftTruncatablePrimes = leftTruncatablePrimesWithDigit n
-            rightTruncatablePrimes = rightTruncatablePrimesWithDigit n in
-        leftTruncatablePrimes `intersect` rightTruncatablePrimes
+truncatablePrimesWithDigit :: Int -> Maybe [Int]
+truncatablePrimesWithDigit n
+  | null right = Nothing
+  | otherwise  = Just (left `intersect` right)
+  where left = leftTruncatablePrimesWithDigit n
+        right = rightTruncatablePrimesWithDigit n
 
 truncatablePrimes :: [Int]
-truncatablePrimes = foldl1 (++) (map truncatablePrimes' [2..6])
+truncatablePrimes = foldl1 (++) primeList
+  where maybePrimeList = takeWhile isJust (map truncatablePrimesWithDigit [2..])
+        primeList = map fromJust maybePrimeList
