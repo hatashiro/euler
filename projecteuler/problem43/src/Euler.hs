@@ -4,7 +4,7 @@ import Data.Digits
 import Data.List
 
 pandigitals :: [[Int]]
-pandigitals = filter ((/= 0).head) (permutations [1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
+pandigitals = filter ((/= 0).head) (permutations [0..9])
 
 sublist :: Int -> Int -> [a] -> [a]
 sublist idx len = take len . drop idx
