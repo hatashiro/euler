@@ -1,6 +1,8 @@
 module Main where
 
 import Euler
+import Data.List
 
 main :: IO ()
-main = putStrLn "hello"
+main = print $
+  find (not.goldbachConjecture) oddComps
