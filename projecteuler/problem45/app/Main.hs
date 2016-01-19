@@ -1,6 +1,9 @@
 module Main where
 
+import Data.List
 import Euler
 
+cond n = isTriangle n && isPentagonal n && n > 40755
+
 main :: IO ()
-main = putStrLn "hello"
+main = print $ find cond hexagonals
