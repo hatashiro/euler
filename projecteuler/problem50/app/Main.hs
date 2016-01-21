@@ -3,4 +3,4 @@ module Main where
 import Euler
 
 main :: IO ()
-main = putStrLn "hello"
+main = print (longestConsecutivePrimeSum 1000000)
