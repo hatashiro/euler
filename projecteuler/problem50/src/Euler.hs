@@ -12,13 +12,19 @@ consecutivePrimeSum :: Int -> Int -> Int
 consecutivePrimeSum from len = sum (take len $ drop from primes)
 
 longestConsecutivePrimeSum :: Int -> (Int, Int)
-longestConsecutivePrimeSum lt = helper lt 0
+longestConsecutivePrimeSum lt = helper lt 0 (0, 0)
   where
-    helper lt idx =
-      let basePrime = consecutivePrimeSum idx 1 in
+    helper lt idx previousMaximum =
+      let maxLen = fst previousMaximum
+          basePrime = consecutivePrimeSum idx maxLen in
       if basePrime > lt
          then (0, 0)
          else
-           let current = maximum (filter (isPrime.snd) (takeWhile ((<=lt).snd) (map (\x -> (x, consecutivePrimeSum idx x)) [1..])))
-               next = helper lt (idx+1) in
-           max current next
+           let current = takeWhile ((<=lt).snd) [(len, val) | len <- [maxLen..],
+                                                              let val = consecutivePrimeSum idx len,
+                                                              isPrime val]
+               currentMaximum = if null current
+                                   then previousMaximum
+                                   else max (maximum current) previousMaximum
+               next = helper lt (idx+1) currentMaximum in
+           max currentMaximum next
