@@ -1,8 +1,10 @@
-# One day, one Haskell
-
 ![Hello World in Haskell](http://i.imgur.com/xi5Sroz.png)
 
-Not sure where it goes, hopefully to the world of FP.
+> A Haskell adventure into Project Euler
+
+## Progress
+
+![Project Euler Profile](https://projecteuler.net/profile/noraesae.png)
 
 ## The story
 
@@ -12,24 +14,19 @@ and have always failed. This repository shall be the last and complete try.
 
 ## The path
 
-I'll upload at least 1 commit a day to this repository. I'm not really sure
-what this project will become, and in fact I don't really care, as the object
-is to learn the awesome langauge, not to create an awesome stuff. Surely I'll
-try to create something useful though.
+I'll try to solve at least 1 problem a day. It may be hard as I will sometimes
+be busy at others, or sometimes the problem is just too hard to solve in a
+short time. Anyway I'll try, and will upload a solution, or at least a progress,
+everyday. I believe it leads me to a way learning Haskell in a right and joyful
+manner.
 
 ## Hello, comrades!
 
-As it's open source, any contribution will be welcomed including pointing a
-path where I should follow, reviewing my work, etc.
+My friend key is `328871_fae510bf049aa8aa2ebd7bf6cdc52e1b`.
 
-Also, it's completely up to you to fork this project and modify whatever you
-want to, and even monetise it, if possible.
-
-## Inspiration
-
-This project is strongly inspired by
-[@natanakane](https://twitter.com/natanakane)'s １日１本ラブライブ.
+I also want to meet some friends solving Euler, so please feel free to drop a
+friend key in [Issues](https://github.com/noraesae/euler/issues).
 
 ## License
 
-[Beerware](LICENSE)
+[BSD3](LICENSE)
