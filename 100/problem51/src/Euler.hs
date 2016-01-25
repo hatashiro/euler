@@ -21,3 +21,15 @@ replaceDigitPositions n indices d = unDigits 10 $
       helper ds []     _ = ds
       helper ds (i:is) d =
         take i ds ++ d:helper (drop (i+1) ds) (map (subtract (i+1)) is) d
+
+nPrimeFamily :: Int -> Maybe Int
+nPrimeFamily n = find (helper n) primes
+  where
+    helper n prime = any (havingNPrimeFamily n prime) [0..(10-n)]
+    havingNPrimeFamily n prime digit =
+      case findDigitPositions prime digit of
+        [] -> False
+        indices ->
+          length (filter isPrime familyMembers) == n
+            where
+              familyMembers = map (replaceDigitPositions prime indices) [digit..9]

@@ -13,3 +13,8 @@ main = hspec $ do
     it "replaces digits in the positions with another digit" $ do
       replaceDigitPositions 15134 [0, 2] 3 `shouldBe` 35334
       replaceDigitPositions 15134 [1] 9 `shouldBe` 19134
+
+  describe "nPrimeFamily" $
+    it "returns a smallest value of n prime value family" $ do
+      nPrimeFamily 6 `shouldBe` Just 13
+      nPrimeFamily 7 `shouldBe` Just 56003
