@@ -4,10 +4,12 @@ import Data.Digits
 
 isPalindrome :: Integer -> Bool
 isPalindrome n = isPalindrome' (digits 10 n) []
-  where isPalindrome' xs@(x':xs') ys
-          | length xs == length ys = xs == ys
-          | length xs <  length ys = xs == tail ys
-          | otherwise              = isPalindrome' xs' (x':ys)
+  where
+    isPalindrome' [_]         [] = True
+    isPalindrome' xs@(x':xs') ys
+      | length xs == length ys = xs == ys
+      | length xs <  length ys = xs == tail ys
+      | otherwise              = isPalindrome' xs' (x':ys)
 
 reverseAdd :: Integer -> Integer
 reverseAdd n = n + (unDigits 10.reverse.digits 10) n
