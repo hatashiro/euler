@@ -4,7 +4,7 @@
 
 ## Progress
 
-![Project Euler Profile](https://projecteuler.net/profile/noraesae.png)
+Check my progress badge [here](https://projecteuler.net/profile/noraesae.png)!
 
 ## The story
 
