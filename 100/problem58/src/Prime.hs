@@ -1,8 +1,7 @@
 module Prime where
 
+isqrt = floor . sqrt . fromIntegral
+
 isPrime :: Integer -> Bool
 isPrime 1 = False
-isPrime n = not (any divisible [2..r])
-  where r = floor (sqrt $ fromIntegral n)
-        divisible r = n `mod` r == 0
-
+isPrime n = null [x | x <- [2..(isqrt n)], n `mod` x == 0]
