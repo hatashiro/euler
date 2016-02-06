@@ -1,9 +1,11 @@
 module Euler where
 
 import Data.Digits
+import Data.List (find)
 import Data.Maybe
 import Data.Numbers.Primes (isPrime)
-import Data.Set (Set, elems, insert, empty)
+import Data.Set (Set, elems, insert, size, member, fromList)
+import Data.Tuple (swap)
 
 isPrimePair :: Int -> Int -> Bool
 isPrimePair x y = isPrime (concatInt x y) && isPrime (concatInt y x)
@@ -26,17 +28,32 @@ retrievePrimePairs x = filterJust $ map (split ds) [1..(length ds - 1)]
         (as, 0:_) -> Nothing
         (as, bs ) -> let a = unDigits 10 as
                          b = unDigits 10 bs in
-                     if isPrime a && isPrime b && isPrimePair a b
+                     if isPrime a && isPrime b && isPrimePair a b && a /= b
                         then Just (a, b)
                         else Nothing
 
-mergePrimePairs :: Set Int -> Int -> Set Int
-mergePrimePairs pSet p = if all (isPrimePair p) (elems pSet)
-                            then insert p pSet
-                            else pSet
+mergePrimeSet :: Set Int -> (Int, Int) -> Set Int
+mergePrimeSet set pair = helper (helper set pair) (swap pair)
+  where
+    helper set (a, b) =
+      if member a set && all (isPrimePair b) (elems set)
+         then insert b set
+         else set
 
 primes :: [Int]
 primes = [x | x <- [3..], isPrime x]
 
 primePairSet :: Int -> Set Int
-primePairSet _ = empty
+primePairSet n = helper n [] primes
+  where
+    helper n sets (p:primes) =
+      fromMaybe (helper n mergedSets primes)
+        (find (\set -> size set == n) mergedSets)
+      where
+        pairs = retrievePrimePairs p
+        merge sets pair =
+          let updatedSets = map (`mergePrimeSet` pair) sets in
+          if updatedSets == sets
+             then fromList [fst pair, snd pair] : updatedSets
+             else updatedSets
+        mergedSets = foldl merge sets pairs

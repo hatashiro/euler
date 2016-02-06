@@ -4,4 +4,4 @@ import Data.Set (elems)
 import Euler
 
 main :: IO ()
-main = print $ elems (primePairSet 5)
+main = print $ sum $ elems (primePairSet 5)
