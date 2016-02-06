@@ -1,6 +1,7 @@
 module Main where
 
+import Data.Set (elems)
 import Euler
 
 main :: IO ()
-main = putStrLn "hello"
+main = print $ elems (primePairSet 5)
