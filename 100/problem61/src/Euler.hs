@@ -33,3 +33,26 @@ cyclicalFigurate3 fs = concatMap cyclicalFigurate3' (permutations fs)
                                                    f2 y,
                                                    let z = p3 * 100 + p1,
                                                    f3 z]
+
+cyclicalFigurate6 :: [Int -> Bool] -> [(Int, Int, Int, Int, Int, Int)]
+cyclicalFigurate6 fs = concatMap cyclicalFigurate6' (permutations fs)
+  where
+    cyclicalFigurate6' [f1, f2, f3, f4, f5, f6] =
+      [(a, b, c, d, e, f) | p1 <- [11..99],
+                            p2 <- [11..99],
+                            let a = p1 * 100 + p2,
+                            f1 a,
+                            p3 <- [11..99],
+                            let b = p2 * 100 + p3,
+                            f2 b,
+                            p4 <- [11..99],
+                            let c = p3 * 100 + p4,
+                            f3 c,
+                            p5 <- [11..99],
+                            let d = p4 * 100 + p5,
+                            f4 d,
+                            p6 <- [11..99],
+                            let e = p5 * 100 + p6,
+                            f5 e,
+                            let f = p6 * 100 + p1,
+                            f6 f]
