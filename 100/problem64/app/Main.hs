@@ -3,4 +3,5 @@ module Main where
 import Euler
 
 main :: IO ()
-main = putStrLn "hello"
+main = print $
+  length $ filter (odd.sqrtFracPeriod) [2..10000]
