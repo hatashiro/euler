@@ -17,15 +17,15 @@ sqrtFracPair n i =
       numer  = -(x - digit * denom) in
   (numer, denom)
 
-cycling :: (Eq a) => [a] -> [a]
-cycling []     = []
-cycling (x:xs) = cycling' xs [x]
+cyclingLength :: (Eq a) => [a] -> Int
+cyclingLength []     = 0
+cyclingLength (x:xs) = helper xs x
   where
-    cycling' (x:xs) xs'
-      | x == head xs' = xs'
-      | otherwise     = cycling' xs (xs' ++ [x])
+    helper (x:xs) first
+      | x == first = 1
+      | otherwise  = 1 + helper xs first
 
 sqrtFracPeriod :: Int -> Int
 sqrtFracPeriod n
   | isSquare n = 0
-  | otherwise  = length.cycling $ map (memoSqrtFracPair n) [0..]
+  | otherwise  = cyclingLength $ map (memoSqrtFracPair n) [0..]
