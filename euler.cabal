@@ -1,0 +1,83 @@
+name:                euler
+version:             0.1.0.0
+homepage:            https://github.com/noraesae/euler
+license:             BSD3
+license-file:        LICENSE
+author:              Hyunje Jun
+maintainer:          Hyunje Jun <me@noraesae.net>
+copyright:           2015-2017 Hyunje Jun
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Problem17
+                       Problem18
+                       Problem19
+                       Problem20
+                       Problem21
+                       Problem22
+                       Problem23
+                       Problem24
+                       Problem25
+                       Problem26
+                       Problem27
+                       Problem28
+                       Problem29
+                       Problem30
+                       Problem31
+                       Problem32
+                       Problem33
+                       Problem34
+                       Problem35
+                       Problem36
+                       Problem37
+                       Problem38
+                       Problem39
+                       Problem40
+                       Problem41
+                       Problem42
+                       Problem43
+                       Problem44
+                       Problem45
+                       Problem46
+                       Problem47
+                       Problem48
+                       Problem49
+                       Problem50
+                       Problem51
+                       Problem52
+                       Problem53
+                       Problem54
+                       Problem55
+                       Problem56
+                       Problem57
+                       Problem58
+                       Problem59
+                       Problem60
+                       Problem61
+                       Problem62
+                       Problem63
+                       Problem64
+                       Problem65
+                       -- NEXT 66
+  build-depends:       base >= 4.7 && < 5
+                     , split
+                     , memoize
+                     , hashmap
+                     , digits
+                     , containers
+                     , primes
+                     , MissingH
+  default-language:    Haskell2010
+
+executable euler
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , euler
+                     , hashmap
+  default-language:    Haskell2010

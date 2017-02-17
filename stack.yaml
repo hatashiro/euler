@@ -1,0 +1,7 @@
+resolver: lts-8.0
+packages:
+- '.'
+extra-deps:
+- memoize-0.8.1
+flags: {}
+extra-package-dbs: []
