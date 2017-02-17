@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+
+function iterLine(path, f) {
+  fs.writeFileSync(path,
+    fs.readFileSync(path).toString()
+      .split('\n')
+      .map(f)
+      .join('\n')
+  );
+}
+
+let next;
+
+iterLine('euler.cabal', (line) => {
+  if (!line.trim().startsWith('-- NEXT')) {
+    return line;
+  }
+
+  next = parseInt(line.trim().slice(8), 10);
+  return '                       Problem' + next + '\n' +
+         '                       -- NEXT ' + (next + 1);
+});
+
+iterLine('app/Main.hs', (line) => {
+  if (line.trim() === '-- IMPORT') {
+    return 'import qualified Problem' + next + '\n' +
+           '-- IMPORT';
+  } else if (line.trim() === '-- MAIN') {
+    return '  , (' + next + ', Problem' + next + '.main)\n' +
+           '  -- MAIN';
+  } else {
+    return line;
+  }
+});
+
+fs.writeFileSync('src/Problem' + next + '.hs', `module Problem${next} where
+
+main :: IO ()
+main = putStrLn "hello"
+`);
