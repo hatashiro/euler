@@ -105,7 +105,7 @@ problems = fromList
   , (63, Problem63.main)
   , (64, Problem64.main)
   , (65, Problem65.main)
-  -- IMPORT
+  -- MAIN
   ]
 
 main :: IO ()
