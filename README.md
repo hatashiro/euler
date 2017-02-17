@@ -27,6 +27,21 @@ My friend key is `328871_fae510bf049aa8aa2ebd7bf6cdc52e1b`.
 I also want to meet some friends solving Euler, so please feel free to drop a
 friend key in [Issues](https://github.com/noraesae/euler/issues).
 
+## How to use
+
+Start solving the next problem:
+
+```
+./next
+```
+
+To build and run:
+
+```
+stack build
+stack exec euler 33
+```
+
 ## License
 
 [BSD3](LICENSE)
